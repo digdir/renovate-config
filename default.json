@@ -8,6 +8,11 @@
   "schedule": ["before 07:00 on Thursday"],
   "configMigration": true,
   "ignorePresets": ["group:monorepos"],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**"
+  ],
   "packageRules": [
     {
       "matchManagers": [
