@@ -1,13 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "description": "Groups minor and patch updates together in a single PR, and treat NPM 0.x.x updates as major updates.",
-  "stabilityDays": 3,
+  "minimumReleaseAge": "3 days",
   "timezone": "Europe/Oslo",
   "internalChecksFilter": "strict",
   "schedule": ["before 07:00 on Thursday"],
   "configMigration": true,
   "ignorePresets": ["group:monorepos"],
+  "rebaseWhen": "conflicted",
   "ignorePaths": [
     "**/node_modules/**",
     "**/bower_components/**",
@@ -34,6 +35,13 @@
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupSlug": "npm-minor-patch"
+    },
+    {
+      "matchManagers": [
+        "dockerfile",
+        "github-actions"
+      ],
+      "pinDigests": true
     }
   ]
 }
